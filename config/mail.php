@@ -46,7 +46,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-    'from' => ['address' => 'rrriansyah@gmail.com', 'name' => 'Riansyah'],
+    'from' => ['address' => 'MY-EMAIL', 'name' => 'MY-NAME'],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
