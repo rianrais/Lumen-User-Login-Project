@@ -42,14 +42,14 @@ class AuthController extends Controller
      *  @var (string)
      */
     private $basicauth; // Contain authentication consisting of base64 encode (string) "username:password"
-    private $appID = "D55AE78AC3DC2A4140E23EF7A72BBF12"; // Application ID registered in infobip. Last for 1 hour.
-    private $messageID = "78DB962DEC5BE600AB9435B1AD0F7B9E"; // Message ID, msg: "Masukan nomor PIN berikut: <pin>".
-    private $accKey = "EF04794F718A3FC8C6DFA0B215B2CF24"; // Account key to create API key.
-    private $apiKey = "995c42c4005eb9862bee83790f2a0c92-df29d82c-77b2-4ae2-b932-dab91c087ac1"; // API key for Authentication.
+    private $appID; // Application ID registered in infobip. Last for 1 hour.
+    private $messageID; // Message ID, msg: "Masukan nomor PIN berikut: <pin>".
+    private $accKey; // Account key to create API key.
+    private $apiKey; // API key for Authentication.
     
     public function __construct()
     {
-        $this->basicauth = base64_encode("Jukir_user1:qwepoi");
+        $this->basicauth = base64_encode("USERNAME:PASSWORD");
     }
     
     /**
@@ -73,7 +73,7 @@ class AuthController extends Controller
             $user->name = $request->input('name');
         }
         //  Digunakan untuk verifikasi email
-        $user->email_token = base64_encode('JUKIR:' . $request->input('email'));        
+        $user->email_token = base64_encode('TOKEN:' . $request->input('email'));        
         $user->save();
 
         dispatch(new SendVerificationEmail($user));
